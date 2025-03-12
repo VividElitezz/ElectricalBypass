@@ -60,11 +60,10 @@
         <!-- Panic Button -->
         <div class="setting">
             <label for="panic-url">Set Panic Button URL:</label>
-            <input type="text" id="panic-url" placeholder="Enter URL">
+            <input type="text" id="panic-url" placeholder="Enter full URL (including http:// or https://)">
             <button class="button" onclick="setPanicURL()">Save</button>
         </div>
         <button id="panic-button" class="panic-button" onclick="activatePanic()">🚨 Panic!</button>
-
     </div>
 
     <button id="home-button" onclick="goHome()">🏠 Home</button>
@@ -86,26 +85,36 @@
         // Reset settings
         function resetSettings() {
             localStorage.removeItem("theme");
+            localStorage.removeItem("panicURL");  // Reset Panic URL
             document.documentElement.setAttribute("data-theme", "default");
             document.getElementById("theme-selector").value = "default";
+            alert("Settings have been reset.");
         }
 
-        // Panic button functions
+        // Save Panic Button URL
         function setPanicURL() {
-            const url = document.getElementById("panic-url").value;
-            if (url) {
-                localStorage.setItem("panicURL", url);  // Save URL to localStorage
-                alert("Panic URL saved!");
+            const url = document.getElementById("panic-url").value.trim();  // Trim whitespace
+
+            if (url && (url.startsWith("http://") || url.startsWith("https://"))) {
+                localStorage.setItem("panicURL", url);  // Save URL
+                alert("Panic URL saved successfully!");
             } else {
-                alert("Please enter a valid URL.");
+                alert("Please enter a valid URL starting with http:// or https://");
             }
         }
 
+        // Activate Panic Button
         function activatePanic() {
-            const panicURL = localStorage.getItem("panicURL") || "https://classroom.google.com/";  // Default if not set
-            window.location.href = panicURL;  // Redirect to the panic URL
+            const panicURL = localStorage.getItem("panicURL");
+
+            if (panicURL) {
+                window.location.href = panicURL;  // Redirect to Panic URL
+            } else {
+                window.location.href = "https://classroom.google.com/";  // Default redirect
+            }
         }
 
+        // Go Home
         function goHome() {
             window.location.href = "/index.html";
         }
@@ -113,6 +122,7 @@
 
 </body>
 </html>
+
 
 
 
