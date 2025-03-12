@@ -156,7 +156,6 @@ body {
   background-color: var(--button-bg);
 }
 
-
 .navbar a:hover {
   background-color: #fafa00;
   color: black;
@@ -275,7 +274,6 @@ iframe#game-frame {
 .fullscreen-button:hover {
   background-color: darkred;
 }
-
 
 /* Settings Page */
 .setting {
@@ -402,8 +400,6 @@ body {
   transform: scale(1.05);
 }
 
-
-
 /* Panic Button */
 .panic-button {
   margin-top: 20px;
@@ -507,3 +503,4 @@ iframe#app-frame {
   background-color: var(--button-hover);
   transform: scale(1.05);
 }
+
