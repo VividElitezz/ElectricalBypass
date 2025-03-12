@@ -296,14 +296,44 @@ iframe#game-frame {
   border: 1px solid #ccc;
 }
 
-/* Default Theme */
-:root {
-  --background-color: #1e1e1e;
-  --text-color: #f4f4f4;
-  --button-bg: #3b3b3b;
-  --button-hover: #555;
-  --button-text: white;
-  --header-color: #FFFF00;
+/* Default Theme: Plain Black Modern Style */
+[data-theme="default"] {
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --accent-color: #1DB954; /* Spotify Green for a modern touch */
+    --button-background: #333333;
+    --button-text-color: #FFFFFF;
+    --header-color: #1DB954;
+}
+
+/* Cyber Theme: Futuristic Color Scheme */
+[data-theme="cyber"] {
+    --background-color: #0D0D0D;
+    --text-color: #00FF9C; /* Neon Green */
+    --accent-color: #00FFFF; /* Cyan */
+    --button-background: #1A1A1A;
+    --button-text-color: #00FF9C;
+    --header-color: #00FFFF;
+}
+
+/* Neon Theme: Bright and Colorful */
+[data-theme="neon"] {
+    --background-color: #1A1A1A;
+    --text-color: #FFFFFF;
+    --accent-color: #FF00FF; /* Magenta */
+    --button-background: #FF00FF;
+    --button-text-color: #FFFFFF;
+    --header-color: #00FFFF; /* Cyan */
+}
+
+/* Vaporwave Theme: Retro Aesthetic */
+[data-theme="vaporwave"] {
+    --background-color: #2B2B2B;
+    --text-color: #FF77E9; /* Pink */
+    --accent-color: #00D8FF; /* Light Blue */
+    --button-background: #FF77E9;
+    --button-text-color: #2B2B2B;
+    --header-color: #00D8FF;
 }
 
 /* Cyber Theme */
