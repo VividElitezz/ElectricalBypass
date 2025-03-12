@@ -1,0 +1,145 @@
+/* Default Theme: Plain Black Modern Style */
+[data-theme="default"] {
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --accent-color: #1DB954; /* Spotify Green for a modern touch */
+    --button-background: #333333;
+    --button-text-color: #FFFFFF;
+    --header-color: #1DB954;
+}
+
+/* Cyber Theme: Futuristic Color Scheme */
+[data-theme="cyber"] {
+    --background-color: #0D0D0D;
+    --text-color: #00FF9C; /* Neon Green */
+    --accent-color: #00FFFF; /* Cyan */
+    --button-background: #1A1A1A;
+    --button-text-color: #00FF9C;
+    --header-color: #00FFFF;
+}
+
+/* Neon Theme: Bright and Colorful */
+[data-theme="neon"] {
+    --background-color: #1A1A1A;
+    --text-color: #FFFFFF;
+    --accent-color: #FF00FF; /* Magenta */
+    --button-background: #FF00FF;
+    --button-text-color: #FFFFFF;
+    --header-color: #00FFFF; /* Cyan */
+}
+
+/* Vaporwave Theme: Retro Aesthetic */
+[data-theme="vaporwave"] {
+    --background-color: #2B2B2B;
+    --text-color: #FF77E9; /* Pink */
+    --accent-color: #00D8FF; /* Light Blue */
+    --button-background: #FF77E9;
+    --button-text-color: #2B2B2B;
+    --header-color: #00D8FF;
+}
+
+/* General Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: var(--button-background);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar .button {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .button:hover {
+    background-color: var(--accent-color);
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.header {
+    color: var(--header-color);
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.setting {
+    margin: 20px 0;
+}
+
+.setting label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.setting input,
+.setting select {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.button {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: var(--accent-color);
+}
+
+.panic-button {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.panic-button:hover {
+    background-color: #CC0000;
+}
+
+#home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+#home-button:hover {
+    background-color: var(--accent-color);
+}
