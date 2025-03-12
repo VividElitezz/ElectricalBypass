@@ -117,21 +117,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/g.html" class="button">Games</a>
   </div>
 
-  <div class="container">
-    <h1 class="header">⚙ Settings ⚙</h1>
+<div class="container">
+        <h1 class="header">⚙️ Settings ⚙️</h1>
 
-    <div class="setting">
-      <label>🎨 Theme:</label>
-      <select id="theme-select">
-        <option value="default">Default</option>
-        <option value="cyber">Cyber</option>
-        <option value="solarized">Solarized</option>
-        <option value="ocean">Ocean</option>
-        <option value="midnight">Midnight</option>
-        <option value="forest">Forest</option>
-        <option value="retro">Retro</option>
-      </select>
-    </div>
+        <!-- Theme Selector -->
+        <div class="setting">
+            <label for="theme-selector">Select Theme:</label>
+            <select id="theme-selector" onchange="changeTheme(this.value)">
+                <option value="default">Default</option>
+                <option value="cyber">Cyber</option>
+                <option value="midnight">Midnight</option>
+                <option value="neon">Neon</option>
+                <option value="vaporwave">Vaporwave</option>
+                <option value="forest">Forest</option>
+                <option value="solarized">Solarized</option>
+                <option value="retro">Retro</option>
+                <option value="fire">Fire</option>
+                <option value="aqua">Aqua</option>
+                <option value="purplehaze">Purple Haze</option>
+                <option value="matrix">Matrix</option>
+                <option value="sunset">Sunset</option>
+                <option value="ice">Ice</option>
+                <option value="gold">Gold</option>
+                <option value="pastel">Pastel</option>
+                <option value="galaxy">Galaxy</option>
+                <option value="darkmode">Dark Mode</option>
+                <option value="storm">Storm</option>
+                <option value="lava">Lava</option>
+                <option value="toxic">Toxic</option>
+                <option value="bubblegum">Bubblegum</option>
+                <option value="steampunk">Steampunk</option>
+                <option value="hacker">Hacker</option>
+                <option value="desert">Desert</option>
+                <option value="deepsea">Deep Sea</option>
+                <option value="chrome">Chrome</option>
+                <option value="shadow">Shadow</option>
+                <option value="steel">Steel</option>
+                <option value="sunrise">Sunrise</option>
+            </select>
+        </div>
 
     <div class="setting">
       <label>🔊 Volume:</label>
