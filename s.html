@@ -12,29 +12,57 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;  /* So it doesn’t block clicks */
-            z-index: -1;  /* Behind the content */
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; /* So it doesn’t block clicks */
+            z-index: -1; /* Behind the content */
         }
 
         /* Basic page styling */
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
         }
 
-        /* Adjust container layout for smaller screens */
+        /* Navbar layout */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            z-index: 9999;
+            padding: 15px 10px;
+            display: flex;
+            justify-content: space-around;
+            box-sizing: border-box;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #3b3b3b;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* Content container */
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             width: 90%;
             max-width: 500px;
-            margin-top: 20px;
+            margin-top: 80px; /* Adjust margin to prevent overlap with navbar */
             backdrop-filter: blur(15px);
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
@@ -52,6 +80,7 @@
 
         label {
             font-size: 14px;
+            width: 40%; /* Adjust label width */
         }
 
         input, select {
@@ -59,7 +88,7 @@
             font-size: 14px;
             border-radius: 8px;
             border: 1px solid #ccc;
-            width: 60%;
+            width: 55%; /* Adjust input width */
         }
 
         button {
@@ -70,39 +99,15 @@
             border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            width: 80%; /* Make buttons responsive */
+            margin-top: 10px;
         }
 
         button:hover {
             background-color: #555;
         }
 
-        /* Navbar styling */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            z-index: 9999;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 8px;
-            background-color: #3b3b3b;
-            transition: background-color 0.3s ease;
-        }
-
-        .navbar a:hover {
-            background-color: #555;
-        }
-
-        /* Home button at bottom */
+        /* Adjust the home button at the bottom */
         #home-button {
             position: fixed;
             bottom: 20px;
@@ -117,11 +122,41 @@
         #home-button:hover {
             background-color: #555;
         }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 600px) {
+            /* Adjust navbar for smaller screens */
+            .navbar {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                margin-bottom: 10px;
+                width: 90%; /* Full width for mobile */
+            }
+
+            /* Make input fields and buttons fill more space */
+            input, select, button {
+                width: 100%;
+            }
+
+            /* Adjust container padding */
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .setting {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
     <canvas id="particles-canvas"></canvas> <!-- Canvas for floating particles -->
-
+    
     <div class="navbar">
         <a href="/index.html" class="button">Home</a>
         <a href="/g.html" class="button">Games</a>
@@ -133,14 +168,15 @@
 
         <!-- Theme Selector -->
         <div class="setting">
-  <button onclick="setTheme('default')">Default</button>
-  <button onclick="setTheme('cyber')">Cyber</button>
-  <button onclick="setTheme('neon')">Neon</button>
-  <button onclick="setTheme('vaporwave')">Vaporwave</button>
-  <button onclick="setTheme('midnight')">Midnight</button>
-  <button onclick="setTheme('forest')">Forest</button>
-</div>
-
+            <label for="theme-selector">Select Theme:</label>
+            <select id="theme-selector" onchange="changeTheme(this.value)">
+                <option value="default">Default</option>
+                <option value="cyber">Cyber</option>
+                <option value="midnight">Midnight</option>
+                <option value="neon">Neon</option>
+                <option value="vaporwave">Vaporwave</option>
+            </select>
+        </div>
 
         <!-- Custom Background Upload -->
         <div class="setting">
@@ -306,6 +342,7 @@
 
 </body>
 </html>
+
 
 
 
