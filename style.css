@@ -614,37 +614,3 @@ button:hover {
 #home-button:hover {
     background-color: #555;
 }
-
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-    /* Adjust navbar for smaller screens */
-    .navbar {
-        flex-direction: column;
-        padding: 10px 0;
-    }
-
-    .navbar a {
-        margin-bottom: 10px;
-        width: 90%; /* Full width for mobile */
-    }
-
-    /* Make input fields and buttons fill more space */
-    input, select, button {
-        width: 100%;
-    }
-
-    /* Adjust container padding */
-    .container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .setting {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-body {
-  overflow-x: hidden;
-}
