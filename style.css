@@ -509,3 +509,6 @@ iframe#app-frame {
     pointer-events: none; /* So it doesn’t block clicks */
     z-index: -1; /* Behind the content */
 }
+body {
+  overflow-x: hidden;
+}
