@@ -644,3 +644,7 @@ button:hover {
         align-items: flex-start;
     }
 }
+
+body {
+  overflow-x: hidden;
+}
