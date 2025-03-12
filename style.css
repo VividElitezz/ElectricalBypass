@@ -509,6 +509,7 @@ iframe#app-frame {
     pointer-events: none; /* So it doesn’t block clicks */
     z-index: -1; /* Behind the content */
 }
+
 /* Basic mobile responsiveness */
 body {
     margin: 0;
@@ -594,3 +595,52 @@ button {
     margin-top: 10px;
 }
 
+button:hover {
+    background-color: #555;
+}
+
+/* Adjust the home button at the bottom */
+#home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3b3b3b;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#home-button:hover {
+    background-color: #555;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    /* Adjust navbar for smaller screens */
+    .navbar {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .navbar a {
+        margin-bottom: 10px;
+        width: 90%; /* Full width for mobile */
+    }
+
+    /* Make input fields and buttons fill more space */
+    input, select, button {
+        width: 100%;
+    }
+
+    /* Adjust container padding */
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .setting {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
