@@ -133,15 +133,14 @@
 
         <!-- Theme Selector -->
         <div class="setting">
-            <label for="theme-selector">Select Theme:</label>
-            <select id="theme-selector" onchange="changeTheme(this.value)">
-                <option value="default">Default</option>
-                <option value="cyber">Cyber</option>
-                <option value="midnight">Midnight</option>
-                <option value="neon">Neon</option>
-                <option value="vaporwave">Vaporwave</option>
-            </select>
-        </div>
+  <button onclick="setTheme('default')">Default</button>
+  <button onclick="setTheme('cyber')">Cyber</button>
+  <button onclick="setTheme('neon')">Neon</button>
+  <button onclick="setTheme('vaporwave')">Vaporwave</button>
+  <button onclick="setTheme('midnight')">Midnight</button>
+  <button onclick="setTheme('forest')">Forest</button>
+</div>
+
 
         <!-- Custom Background Upload -->
         <div class="setting">
