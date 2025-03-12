@@ -296,105 +296,70 @@ iframe#game-frame {
   border: 1px solid #ccc;
 }
 
-/* Default Theme: Plain Black Modern Style */
+/* Base Styles */
+:root {
+  --font-family: 'Arial', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Default Theme: Black Modern Style */
 [data-theme="default"] {
-    --background-color: #000000;
-    --text-color: #FFFFFF;
-    --accent-color: #1DB954; /* Spotify Green for a modern touch */
-    --button-background: #333333;
-    --button-text-color: #FFFFFF;
-    --header-color: #1DB954;
+  --background-color: #000000;
+  --text-color: #FFFFFF;
+  --accent-color: #1A1A1A;
 }
 
 /* Cyber Theme: Futuristic Color Scheme */
 [data-theme="cyber"] {
-    --background-color: #0D0D0D;
-    --text-color: #00FF9C; /* Neon Green */
-    --accent-color: #00FFFF; /* Cyan */
-    --button-background: #1A1A1A;
-    --button-text-color: #00FF9C;
-    --header-color: #00FFFF;
+  --background-color: #0D0221; /* Deep midnight blue */
+  --text-color: #00FF00; /* Neon green */
+  --accent-color: #00FFFF; /* Cyan */
 }
 
 /* Neon Theme: Bright and Colorful */
 [data-theme="neon"] {
-    --background-color: #1A1A1A;
-    --text-color: #FFFFFF;
-    --accent-color: #FF00FF; /* Magenta */
-    --button-background: #FF00FF;
-    --button-text-color: #FFFFFF;
-    --header-color: #00FFFF; /* Cyan */
+  --background-color: #1A1A1A; /* Dark gray */
+  --text-color: #FF00FF; /* Neon magenta */
+  --accent-color: #00FFFF; /* Neon cyan */
 }
 
 /* Vaporwave Theme: Retro Aesthetic */
 [data-theme="vaporwave"] {
-    --background-color: #2B2B2B;
-    --text-color: #FF77E9; /* Pink */
-    --accent-color: #00D8FF; /* Light Blue */
-    --button-background: #FF77E9;
-    --button-text-color: #2B2B2B;
-    --header-color: #00D8FF;
+  --background-color: #2E1A47; /* Deep purple */
+  --text-color: #FF77FF; /* Soft pink */
+  --accent-color: #FFD700; /* Gold */
 }
 
-/* Cyber Theme */
-[data-theme="cyber"] {
-  --background-color: black;
-  --text-color: cyan;
-  --button-bg: #00ffea;
-  --button-hover: #00ccbb;
-  --button-text: black;
-  --header-color: #00ffff;
-}
-
-/* Solarized Theme */
-[data-theme="solarized"] {
-  --background-color: #fdf6e3;
-  --text-color: #657b83;
-  --button-bg: #b58900;
-  --button-hover: #cb4b16;
-  --button-text: white;
-  --header-color: #b58900;
-}
-
-/* Ocean Theme */
-[data-theme="ocean"] {
-  --background-color: #2b3e50;
-  --text-color: #a0cfff;
-  --button-bg: #007acc;
-  --button-hover: #005f99;
-  --button-text: white;
-  --header-color: #00aaff;
-}
-
-/* Midnight Theme */
+/* Midnight Theme: Dark and Sleek */
 [data-theme="midnight"] {
-  --background-color: #121212;
-  --text-color: #bb86fc;
-  --button-bg: #3700b3;
-  --button-hover: #6200ea;
-  --button-text: white;
-  --header-color: #bb86fc;
+  --background-color: #121212; /* Almost black */
+  --text-color: #E0E0E0; /* Light gray */
+  --accent-color: #BB86FC; /* Soft purple */
 }
 
-/* Forest Theme */
+/* Forest Theme: Earthy and Natural */
 [data-theme="forest"] {
-  --background-color: #2c5d3f;
-  --text-color: #d4e157;
-  --button-bg: #558b2f;
-  --button-hover: #76ff03;
-  --button-text: black;
-  --header-color: #76ff03;
+  --background-color: #2B3A32; /* Deep forest green */
+  --text-color: #E0E0D1; /* Light beige */
+  --accent-color: #A3B18A; /* Sage green */
 }
 
-/* Retro Theme */
-[data-theme="retro"] {
-  --background-color: #ffcc00;
-  --text-color: #ff3366;
-  --button-bg: #ff6600;
-  --button-hover: #ff0033;
-  --button-text: black;
-  --header-color: #ff0033;
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
+
+a {
+  color: var(--accent-color);
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--text-color);
+}
+
 
 /* Apply Theme Variables */
 body {
