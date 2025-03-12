@@ -1,123 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1EE0QBYNM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Z1EE0QBYNM');
-</script>
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings - ElectricalBypass</title>
-  
-  <link rel="shortcut icon" href="assets/img/static.png" type="image/x-icon">
-  <link rel="stylesheet" href="/style.css">
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      loadSettings();
-
-      // Theme Selector
-      document.getElementById("theme-select").addEventListener("change", function () {
-        let theme = this.value;
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-      });
-
-      // Volume Control
-      document.getElementById("volume").addEventListener("input", function () {
-        localStorage.setItem("volume", this.value);
-      });
-
-      // Custom Background Upload
-      document.getElementById("bg-upload").addEventListener("change", function (event) {
-        let file = event.target.files[0];
-        if (file) {
-          let reader = new FileReader();
-          reader.onload = function (e) {
-            document.body.style.backgroundImage = `url('${e.target.result}')`;
-            localStorage.setItem("background", e.target.result);
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-
-      // Save Panic Button URL
-      document.getElementById("panic-url").addEventListener("input", function () {
-        let url = this.value.trim();
-        if (url && !url.startsWith("http")) {
-          url = "https://" + url;
-        }
-        localStorage.setItem("panicURL", url);
-      });
-
-      // Panic Button Redirect
-      document.getElementById("panic-button").addEventListener("click", function () {
-        let panicURL = localStorage.getItem("panicURL") || "https://google.com";
-        window.location.href = panicURL;
-      });
-
-      // Reset Settings
-      document.getElementById("reset-settings").addEventListener("click", function () {
-        localStorage.clear();
-        location.reload();
-      });
-    });
-
-    function loadSettings() {
-      // Apply saved theme
-      let theme = localStorage.getItem("theme") || "default";
-      document.documentElement.setAttribute("data-theme", theme);
-      document.getElementById("theme-select").value = theme;
-
-      // Load volume
-      let volume = localStorage.getItem("volume") || 50;
-      document.getElementById("volume").value = volume;
-
-      // Load and apply uploaded background
-      let background = localStorage.getItem("background");
-      if (background) {
-        document.body.style.backgroundImage = `url('${background}')`;
-      }
-
-      // Load Panic Button URL
-      let panicURL = localStorage.getItem("panicURL") || "";
-      document.getElementById("panic-url").value = panicURL;
-    }
-  </script>
-
-<script type='text/javascript' src='//pl26091686.effectiveratecpm.com/11/30/70/1130708ed2a9946c38fb8602f8285721.js'></script>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T6M2XZ26');</script>
-<!-- End Google Tag Manager -->
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - ElectricalBypass</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/cloak.js"></script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6M2XZ26"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <div class="navbar">
+        <a href="/index.html" class="button">Home</a>
+        <a href="/g.html" class="button">Games</a>
+        <a href="/a.html" class="button">Apps</a>
+    </div>
 
-
-  
-  <div class="navbar">
-    <a href="/index.html" class="button">Home</a>
-    <a href="/a.html" class="button">Apps</a>
-    <a href="/g.html" class="button">Games</a>
-  </div>
-
-<div class="container">
+    <div class="container">
         <h1 class="header">⚙️ Settings ⚙️</h1>
 
         <!-- Theme Selector -->
@@ -157,36 +54,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </select>
         </div>
 
-    <div class="setting">
-      <label>🔊 Volume:</label>
-      <input type="range" id="volume" min="0" max="100" value="50">
+        <!-- Reset Settings Button -->
+        <button class="button" onclick="resetSettings()">Reset to Default</button>
+
+        <!-- Panic Button -->
+        <div class="setting">
+            <label for="panic-url">Set Panic Button URL:</label>
+            <input type="text" id="panic-url" placeholder="Enter URL">
+            <button class="button" onclick="setPanicURL()">Save</button>
+        </div>
+        <button id="panic-button" class="panic-button" onclick="activatePanic()">🚨 Panic!</button>
+
     </div>
 
-    <div class="setting">
-      <label>📂 Upload Custom Background:</label>
-      <input type="file" id="bg-upload" accept="image/*">
-    </div>
+    <button id="home-button" onclick="goHome()">🏠 Home</button>
 
-    <div class="setting">
-      <label>🚨 Panic Button URL:</label>
-      <input type="text" id="panic-url" placeholder="Enter a URL for Panic Button">
-    </div>
+    <script>
+        // Load saved theme
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedTheme = localStorage.getItem("theme") || "default";
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            document.getElementById("theme-selector").value = savedTheme;
+        });
 
-    <button id="panic-button" class="panic-button">🚨 Panic Button</button>
-    <button id="reset-settings">🔄 Reset Settings</button>
-  </div>
+        // Change theme
+        function changeTheme(theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+        }
 
-<button id="home-button" onclick="goHome()">🏠 Home</button>
+        // Reset settings
+        function resetSettings() {
+            localStorage.removeItem("theme");
+            document.documentElement.setAttribute("data-theme", "default");
+            document.getElementById("theme-selector").value = "default";
+        }
 
-<script>
-  function goHome() {
-    window.location.href = "/index.html";
-  }
-</script>
+        // Panic button functions
+        function setPanicURL() {
+            const url = document.getElementById("panic-url").value;
+            localStorage.setItem("panicURL", url);
+        }
 
-  
+        function activatePanic() {
+            const panicURL = localStorage.getItem("panicURL") || "https://classroom.google.com/";
+            window.location.href = panicURL;
+        }
+
+        function goHome() {
+            window.location.href = "/index.html";
+        }
+    </script>
+
 </body>
 </html>
+
 
 
           
