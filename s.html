@@ -8,6 +8,8 @@
     <script src="/cloak.js"></script>
 </head>
 <body>
+    <canvas id="particles-canvas"></canvas> <!-- Canvas for floating particles -->
+    
     <div class="navbar">
         <a href="/index.html" class="button">Home</a>
         <a href="/g.html" class="button">Games</a>
@@ -26,32 +28,19 @@
                 <option value="midnight">Midnight</option>
                 <option value="neon">Neon</option>
                 <option value="vaporwave">Vaporwave</option>
-                <option value="forest">Forest</option>
-                <option value="solarized">Solarized</option>
-                <option value="retro">Retro</option>
-                <option value="fire">Fire</option>
-                <option value="aqua">Aqua</option>
-                <option value="purplehaze">Purple Haze</option>
-                <option value="matrix">Matrix</option>
-                <option value="sunset">Sunset</option>
-                <option value="ice">Ice</option>
-                <option value="gold">Gold</option>
-                <option value="pastel">Pastel</option>
-                <option value="galaxy">Galaxy</option>
-                <option value="darkmode">Dark Mode</option>
-                <option value="storm">Storm</option>
-                <option value="lava">Lava</option>
-                <option value="toxic">Toxic</option>
-                <option value="bubblegum">Bubblegum</option>
-                <option value="steampunk">Steampunk</option>
-                <option value="hacker">Hacker</option>
-                <option value="desert">Desert</option>
-                <option value="deepsea">Deep Sea</option>
-                <option value="chrome">Chrome</option>
-                <option value="shadow">Shadow</option>
-                <option value="steel">Steel</option>
-                <option value="sunrise">Sunrise</option>
             </select>
+        </div>
+
+        <!-- Custom Background Upload -->
+        <div class="setting">
+            <label for="background-upload">Upload Background:</label>
+            <input type="file" id="background-upload" accept="image/*">
+        </div>
+
+        <!-- Toggle Particles (Enabled on All Pages) -->
+        <div class="setting">
+            <label for="particles-toggle">Enable Particles:</label>
+            <input type="checkbox" id="particles-toggle" checked>
         </div>
 
         <!-- Reset Settings Button -->
@@ -69,11 +58,25 @@
     <button id="home-button" onclick="goHome()">🏠 Home</button>
 
     <script>
-        // Load saved theme
+        // Load saved settings on page load
         document.addEventListener("DOMContentLoaded", function () {
+            // Load saved theme
             const savedTheme = localStorage.getItem("theme") || "default";
             document.documentElement.setAttribute("data-theme", savedTheme);
             document.getElementById("theme-selector").value = savedTheme;
+
+            // Load custom background
+            const savedBackground = localStorage.getItem("customBackground");
+            if (savedBackground) {
+                document.body.style.backgroundImage = `url(${savedBackground})`;
+            }
+
+            // Load particles setting
+            const particlesEnabled = localStorage.getItem("particlesEnabled") !== "false";
+            document.getElementById("particles-toggle").checked = particlesEnabled;
+
+            // Apply particles setting across the site
+            if (particlesEnabled) startParticles();
         });
 
         // Change theme
@@ -82,35 +85,50 @@
             localStorage.setItem("theme", theme);
         }
 
+        // Custom Background Upload
+        document.getElementById("background-upload").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    localStorage.setItem("customBackground", e.target.result);
+                    document.body.style.backgroundImage = `url(${e.target.result})`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
         // Reset settings
         function resetSettings() {
             localStorage.removeItem("theme");
-            localStorage.removeItem("panicURL");  // Reset Panic URL
+            localStorage.removeItem("customBackground");
+            localStorage.removeItem("particlesEnabled");
             document.documentElement.setAttribute("data-theme", "default");
             document.getElementById("theme-selector").value = "default";
+            document.body.style.backgroundImage = "none";
+            document.getElementById("particles-toggle").checked = true;
+            startParticles();
             alert("Settings have been reset.");
         }
 
         // Save Panic Button URL
         function setPanicURL() {
-            const url = document.getElementById("panic-url").value.trim();  // Trim whitespace
-
+            const url = document.getElementById("panic-url").value.trim();
             if (url && (url.startsWith("http://") || url.startsWith("https://"))) {
-                localStorage.setItem("panicURL", url);  // Save URL
+                localStorage.setItem("panicURL", url);
                 alert("Panic URL saved successfully!");
             } else {
                 alert("Please enter a valid URL starting with http:// or https://");
             }
         }
 
-        // Activate Panic Button (Opens in a New Tab to Avoid Errors)
+        // Activate Panic Button (Opens in a New Tab)
         function activatePanic() {
             const panicURL = localStorage.getItem("panicURL");
-
             if (panicURL) {
-                window.open(panicURL, "_blank");  // Open in new tab
+                window.open(panicURL, "_blank");
             } else {
-                window.open("https://classroom.google.com/", "_blank");  // Default redirect
+                window.open("https://classroom.google.com/", "_blank");
             }
         }
 
@@ -118,10 +136,65 @@
         function goHome() {
             window.location.href = "/index.html";
         }
-    </script>
 
+        // Toggle Particles and Save Setting
+        document.getElementById("particles-toggle").addEventListener("change", function () {
+            const enabled = this.checked;
+            localStorage.setItem("particlesEnabled", enabled);
+            location.reload();  // Reload to apply setting across all pages
+        });
+
+        // Particle Effect Script (Runs Across All Pages)
+        let particleCanvas = document.getElementById("particles-canvas");
+        let ctx = particleCanvas.getContext("2d");
+        let particlesArray = [];
+        let animationFrame;
+
+        function startParticles() {
+            resizeCanvas();
+            window.addEventListener("resize", resizeCanvas);
+            createParticles();
+            animateParticles();
+        }
+
+        function resizeCanvas() {
+            particleCanvas.width = window.innerWidth;
+            particleCanvas.height = window.innerHeight;
+        }
+
+        function createParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 100; i++) {
+                particlesArray.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    size: Math.random() * 3 + 1,
+                    speedX: (Math.random() - 0.5) * 2,
+                    speedY: (Math.random() - 0.5) * 2
+                });
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+            for (let particle of particlesArray) {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+
+                if (particle.x < 0 || particle.x > window.innerWidth) particle.speedX *= -1;
+                if (particle.y < 0 || particle.y > window.innerHeight) particle.speedY *= -1;
+
+                ctx.fillStyle = "white";
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            animationFrame = requestAnimationFrame(animateParticles);
+        }
+    </script>
 </body>
 </html>
+
 
 
 
