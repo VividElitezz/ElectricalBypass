@@ -6,10 +6,122 @@
     <title>Settings - ElectricalBypass</title>
     <link rel="stylesheet" href="/style.css">
     <script src="/cloak.js"></script>
+    <style>
+        /* Ensure the canvas stretches to the full screen */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;  /* So it doesn’t block clicks */
+            z-index: -1;  /* Behind the content */
+        }
+
+        /* Basic page styling */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Adjust container layout for smaller screens */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 90%;
+            max-width: 500px;
+            margin-top: 20px;
+            backdrop-filter: blur(15px);
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .setting {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        input, select {
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 60%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3b3b3b;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            z-index: 9999;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #3b3b3b;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* Home button at bottom */
+        #home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3b3b3b;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #home-button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
     <canvas id="particles-canvas"></canvas> <!-- Canvas for floating particles -->
-    
+
     <div class="navbar">
         <a href="/index.html" class="button">Home</a>
         <a href="/g.html" class="button">Games</a>
@@ -195,6 +307,7 @@
 
 </body>
 </html>
+
 
 
 
