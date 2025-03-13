@@ -789,7 +789,33 @@ body {
     }
 }
 
+/* Home Button (Now Compact & Theme-Compatible) */
+#home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px 12px;
+    border-radius: 50%; /* Makes it a circular icon */
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 9999; /* Stays on top */
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+/* Hover Effect */
+#home-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.1);
+}
 
 /* Apply Theme to All Buttons (Including Settings Tab) */
 .button, .app-card, .game-card, .setting button {
