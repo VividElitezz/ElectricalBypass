@@ -896,3 +896,24 @@ body {
         align-items: flex-start;
     }
 }
+
+#exit-fullscreen {
+  display: none; /* Initially hidden */
+  position: fixed; /* Keeps the button at the top */
+  top: 20px; /* Adjust the position as needed */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Ensure the button is centered */
+  z-index: 9999; /* Ensure it stays on top of other content */
+  background-color: rgba(0, 0, 0, 0.5); /* Background color to make it stand out */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: opacity 0.3s ease;
+}
+
+#exit-fullscreen:hover {
+  background-color: rgba(255, 0, 0, 0.7); /* Change color on hover */
+}
