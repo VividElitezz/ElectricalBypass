@@ -360,7 +360,6 @@ a:hover {
   color: var(--text-color);
 }
 
-
 /* Apply Theme Variables */
 body {
   background-color: var(--background-color);
@@ -479,8 +478,6 @@ iframe#app-frame {
   background-color: darkred;
 }
 
-
-
 /* Ensure the canvas stretches to the full screen */
 #particles-canvas {
     position: fixed;
@@ -583,212 +580,6 @@ button:hover {
 
 /* Adjust the home button at the bottom */
 
-
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-    /* Adjust navbar for smaller screens */
-    .navbar {
-        flex-direction: column;
-        padding: 10px 0;
-    }
-
-    .navbar a {
-        margin-bottom: 10px;
-        width: 90%; /* Full width for mobile */
-    }
-
-    /* Make input fields and buttons fill more space */
-    input, select, button {
-        width: 100%;
-    }
-
-    /* Adjust container padding */
-    .container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .setting {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}/* Global Styles */
-body {
-  background-color: #1e1e1e;
-  color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Game Buttons - Fixed Visibility Issue */
-.game-card {
-    background-color: var(--button-bg) !important;
-    color: var(--button-text) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    z-index: 1000;
-    width: 100%;
-    max-width: 200px;
-    padding: 14px;
-    font-size: 16px;
-    transition: background 0.3s ease, transform 0.2s ease;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Ensure Hover Works */
-.game-card:hover {
-    background-color: var(--button-hover);
-    transform: scale(1.05);
-}
-
-/* Fix for Mobile Display */
-@media (max-width: 600px) {
-    .game-card {
-        width: 100%;
-        max-width: 200px; /* Ensures mobile-friendly buttons */
-        padding: 14px;
-        font-size: 16px;
-    }
-}
-
-/* Ensure Theme Variables Are Applied */
-[data-theme="default"] {
-    --button-bg: #3b3b3b;
-    --button-hover: #555;
-    --button-text: white;
-}
-
-[data-theme="cyber"] {
-    --button-bg: #00ffea;
-    --button-hover: #00ccbb;
-    --button-text: black;
-}
-
-[data-theme="midnight"] {
-    --button-bg: #3700b3;
-    --button-hover: #6200ea;
-    --button-text: white;
-}
-
-[data-theme="vaporwave"] {
-    --button-bg: #ff00ff;
-    --button-hover: #ff44ff;
-    --button-text: black;
-}
-
-[data-theme="retro"] {
-    --button-bg: #ff6600;
-    --button-hover: #ff0033;
-    --button-text: black;
-}
-
-[data-theme="forest"] {
-    --button-bg: #558b2f;
-    --button-hover: #76ff03;
-    --button-text: black;
-}
-
-[data-theme="galaxy"] {
-    --button-bg: #5500ff;
-    --button-hover: #7700ff;
-    --button-text: white;
-}
-
-[data-theme="hacker"] {
-    --button-bg: darkgreen;
-    --button-hover: lightgreen;
-    --button-text: white;
-}
-
-
-/* Fix for Navbar Buttons */
-.navbar a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--button-text);
-    background-color: var(--button-bg);
-    padding: 12px 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: background 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-    border: none;
-}
-
-.navbar a:hover {
-    background-color: var(--button-hover);
-    transform: scale(1.05);
-}
-
-
-
-/* Apply Theme to All Buttons (Including Settings Tab) */
-.button, .app-card, .game-card, .setting button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    padding: 12px 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    text-align: center;
-    transition: background 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-    border: none;
-}
-
-.button:hover, .app-card:hover, .game-card:hover, .setting button:hover {
-    background-color: var(--button-hover);
-    transform: scale(1.05);
-}
-
-/* Game Buttons - Fixed Visibility Issue */
-.game-card {
-    background-color: var(--button-bg) !important;
-    color: var(--button-text) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    z-index: 1000;
-    width: 100%;  /* Allow full width but with max width to prevent overflow */
-    max-width: 220px; /* Reduce the width for better fitting */
-    padding: 14px;
-    font-size: 16px;
-    transition: background 0.3s ease, transform 0.2s ease;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Ensure Hover Works */
-.game-card:hover {
-    background-color: var(--button-hover);
-    transform: scale(1.05);
-}
-
-/* Fix for Mobile Display */
-@media (max-width: 600px) {
-    .game-card {
-        width: 100%;
-        max-width: 250px;  /* Ensure buttons fit in the screen on mobile */
-        padding: 14px;
-        font-size: 16px;
-    }
-}
-
 /* Home Button (Now Compact & Theme-Compatible) */
 #home-button {
     position: fixed;
@@ -815,25 +606,6 @@ body {
 #home-button:hover {
     background-color: var(--button-hover);
     transform: scale(1.1);
-}
-
-/* Apply Theme to All Buttons (Including Settings Tab) */
-.button, .app-card, .game-card, .setting button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    padding: 12px 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    text-align: center;
-    transition: background 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-    border: none;
-}
-
-.button:hover, .app-card:hover, .game-card:hover, .setting button:hover {
-    background-color: var(--button-hover);
-    transform: scale(1.05);
 }
 
 /* Fix Layout of Game List */
@@ -888,6 +660,5 @@ body {
   transition: opacity 0.3s ease;
 }
 
-#exit-fullscreen:hover {
-  background-color: rgba(255, 0, 0, 0.7); /* Change color on hover */
-}
+#exit-full
+
