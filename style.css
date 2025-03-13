@@ -217,13 +217,17 @@ body {
 }
 
 .game-card {
-    background-color: var(--button-bg) !important;
-    color: var(--button-text) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    z-index: 1000;
+  background-color: #3b3b3b;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  border: none;
 }
-
 
 .game-card:hover {
   background-color: #fafa00;
@@ -639,4 +643,145 @@ button:hover {
         flex-direction: column;
         align-items: flex-start;
     }
+}/* Global Styles */
+body {
+  background-color: #1e1e1e;
+  color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Game Buttons - Fixed Visibility Issue */
+.game-card {
+    background-color: var(--button-bg) !important;
+    color: var(--button-text) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1000;
+    width: 100%;
+    max-width: 200px;
+    padding: 14px;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Ensure Hover Works */
+.game-card:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+/* Fix for Mobile Display */
+@media (max-width: 600px) {
+    .game-card {
+        width: 100%;
+        max-width: 200px; /* Ensures mobile-friendly buttons */
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+/* Ensure Theme Variables Are Applied */
+[data-theme="default"] {
+    --button-bg: #3b3b3b;
+    --button-hover: #555;
+    --button-text: white;
+}
+
+[data-theme="cyber"] {
+    --button-bg: #00ffea;
+    --button-hover: #00ccbb;
+    --button-text: black;
+}
+
+[data-theme="midnight"] {
+    --button-bg: #3700b3;
+    --button-hover: #6200ea;
+    --button-text: white;
+}
+
+[data-theme="vaporwave"] {
+    --button-bg: #ff00ff;
+    --button-hover: #ff44ff;
+    --button-text: black;
+}
+
+[data-theme="retro"] {
+    --button-bg: #ff6600;
+    --button-hover: #ff0033;
+    --button-text: black;
+}
+
+[data-theme="forest"] {
+    --button-bg: #558b2f;
+    --button-hover: #76ff03;
+    --button-text: black;
+}
+
+[data-theme="galaxy"] {
+    --button-bg: #5500ff;
+    --button-hover: #7700ff;
+    --button-text: white;
+}
+
+[data-theme="hacker"] {
+    --button-bg: darkgreen;
+    --button-hover: lightgreen;
+    --button-text: white;
+}
+
+/* Home Button */
+#home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+#home-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+/* Fix for Navbar Buttons */
+.navbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--button-text);
+    background-color: var(--button-bg);
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.navbar a:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
