@@ -217,17 +217,13 @@ body {
 }
 
 .game-card {
-  background-color: #3b3b3b;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 18px;
-  text-align: center;
-  transition: background 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-  border: none;
+    background-color: var(--button-bg) !important;
+    color: var(--button-text) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1000;
 }
+
 
 .game-card:hover {
   background-color: #fafa00;
