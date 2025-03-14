@@ -18,6 +18,60 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Theme Variables */
+:root {
+  --font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+[data-theme="default"] {
+  --background-color: #1e1e1e;
+  --text-color: #f4f4f4;
+  --button-bg: #3b3b3b;
+  --button-text: white;
+  --button-hover: #fafa00;
+}
+
+[data-theme="cyber"] {
+  --background-color: #0D0221;
+  --text-color: #00FF00;
+  --button-bg: #00FFFF;
+  --button-text: black;
+  --button-hover: #FF00FF;
+}
+
+[data-theme="neon"] {
+  --background-color: #1A1A1A;
+  --text-color: #FF00FF;
+  --button-bg: #00FFFF;
+  --button-text: black;
+  --button-hover: #FFD700;
+}
+
+[data-theme="vaporwave"] {
+  --background-color: #2E1A47;
+  --text-color: #FF77FF;
+  --button-bg: #FFD700;
+  --button-text: black;
+  --button-hover: #A3B18A;
+}
+
+[data-theme="midnight"] {
+  --background-color: #121212;
+  --text-color: #E0E0E0;
+  --button-bg: #BB86FC;
+  --button-text: white;
+  --button-hover: #03DAC6;
+}
+
+[data-theme="forest"] {
+  --background-color: #2B3A32;
+  --text-color: #E0E0D1;
+  --button-bg: #A3B18A;
+  --button-text: black;
+  --button-hover: #FFD700;
+}
+
 /* Container */
 .container {
   display: flex;
@@ -40,13 +94,13 @@ body {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  color: #fafa00;
+  color: var(--text-color);
   z-index: 1000;
   padding: 10px 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -54,23 +108,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--button-text, white) !important;
+  color: var(--button-text) !important;
   padding: 12px 18px;
   text-decoration: none;
   transition: background-color 300ms, color 300ms;
   border-radius: 10px;
-  background-color: var(--button-bg, #3b3b3b);
+  background-color: var(--button-bg);
 }
 
 .navbar a:hover {
-  background-color: #fafa00;
+  background-color: var(--button-hover);
   color: black;
 }
 
 /* Button Styling */
 .button, .app-card, .game-card {
-  background-color: var(--button-bg, #3b3b3b);
-  color: var(--button-text, white);
+  background-color: var(--button-bg);
+  color: var(--button-text);
   padding: 12px 18px;
   border-radius: 10px;
   text-decoration: none;
@@ -79,12 +133,25 @@ body {
   transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button:hover, .app-card:hover, .game-card:hover {
-  background-color: var(--button-hover, #fafa00);
+  background-color: var(--button-hover);
   transform: scale(1.05);
   color: black;
+}
+
+/* App and Game List Centering */
+.app-list, .game-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 /* Full-Screen Exit Button */
@@ -121,5 +188,9 @@ body {
   .setting {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .app-list, .game-list {
+    flex-direction: column;
+    align-items: center;
   }
 }
