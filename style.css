@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
-  background-color: #1e1e1e;
-  color: #f4f4f4;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -11,12 +11,14 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
-  overflow: hidden;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
+/* Container Styling */
 .container {
   display: flex;
   flex-direction: column;
@@ -31,6 +33,7 @@ body {
   width: min(90%, 500px);
 }
 
+/* Header Styling */
 .header {
   font-size: 48px;
   font-weight: 600;
@@ -41,17 +44,20 @@ body {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* Icon */
 .icon {
   height: 48px;
   width: 48px;
 }
 
+/* Description */
 .description {
   font-size: 18px;
   color: #d1d1d1;
   line-height: 1.6;
 }
 
+/* Input Field */
 .input {
   width: 100%;
   max-width: 450px;
@@ -79,6 +85,7 @@ body {
   color: #757575;
 }
 
+/* Logo */
 .logo {
   height: 60px;
   width: 60px;
@@ -135,19 +142,18 @@ body {
   z-index: 1000;
   padding: 10px 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-
   display: flex;
-  align-items: center; /* Ensures buttons & Discord icon align */
+  align-items: center;
   justify-content: left;
-  gap: 10px; /* Adds spacing between buttons and Discord icon */
+  gap: 10px;
 }
 
-/* Navbar buttons */
+/* Navbar links */
 .navbar a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--button-text) !important;  /* Now follows the theme */
+  color: var(--button-text) !important;
   text-align: center;
   padding: 12px 18px;
   text-decoration: none;
@@ -161,61 +167,52 @@ body {
   color: black;
 }
 
-/* Style buttons */
-.button {
+/* Buttons */
+.button, .app-card, .game-card {
   color: white;
   text-decoration: none;
   padding: 12px 18px;
   margin: 5px;
-  background-color: #3b3b3b; /* Slightly lighter gray */
+  background-color: #3b3b3b;
   border-radius: 10px;
   transition: background 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px; /* Matches Discord button */
+  height: 40px;
   cursor: pointer;
 }
 
-/* Hover effect for buttons */
-.button:hover {
-  background-color: #555; /* Lighter gray on hover */
+.button:hover, .app-card:hover, .game-card:hover {
+  background-color: #fafa00;
+  color: black;
+  transform: scale(1.05);
 }
 
-/* Fix Discord Icon Alignment */
+/* Discord Button */
 .discord-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #5865F2; /* Discord brand color */
+  background-color: #5865F2;
   border-radius: 10px;
   width: 40px;
-  height: 40px; /* Matches button size */
+  height: 40px;
   transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
 }
 
-/* Resize Discord Icon */
-.discord-icon {
-  width: 24px;
-  height: 24px;
-}
-
-/* Hover Effect for Discord Button */
 .discord-button:hover {
   background-color: #4752C4;
   transform: scale(1.1);
 }
 
-/* Games Page Styles */
-.game-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 20px;
+.discord-icon {
+  width: 24px;
+  height: 24px;
 }
 
+/* Game Card */
 .game-card {
   background-color: #3b3b3b;
   color: white;
@@ -226,7 +223,6 @@ body {
   text-align: center;
   transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
-  border: none;
 }
 
 .game-card:hover {
@@ -235,8 +231,8 @@ body {
   transform: scale(1.05);
 }
 
-/* Game Display Area */
-.game-container {
+/* Game Display */
+.game-container, .app-container {
   width: 100%;
   max-width: 900px;
   height: 500px;
@@ -247,14 +243,14 @@ body {
   position: relative;
 }
 
-iframe#game-frame {
+iframe#game-frame, iframe#app-frame {
   width: 100%;
   height: 100%;
   border: none;
 }
 
 /* Full-Screen Exit Button */
-.fullscreen-button {
+.fullscreen-button, #exit-fullscreen {
   display: none;
   position: fixed;
   top: 5px;
@@ -271,11 +267,11 @@ iframe#game-frame {
   z-index: 9999;
 }
 
-.fullscreen-button:hover {
+.fullscreen-button:hover, #exit-fullscreen:hover {
   background-color: darkred;
 }
 
-/* Settings Page */
+/* Settings */
 .setting {
   margin: 15px 0;
   display: flex;
@@ -296,104 +292,6 @@ iframe#game-frame {
   border: 1px solid #ccc;
 }
 
-/* Base Styles */
-:root {
-  --font-family: 'Arial', sans-serif;
-  --transition-speed: 0.3s;
-}
-
-/* Default Theme: Black Modern Style */
-[data-theme="default"] {
-  --background-color: #000000;
-  --text-color: #FFFFFF;
-  --accent-color: #1A1A1A;
-}
-
-/* Cyber Theme: Futuristic Color Scheme */
-[data-theme="cyber"] {
-  --background-color: #0D0221; /* Deep midnight blue */
-  --text-color: #00FF00; /* Neon green */
-  --accent-color: #00FFFF; /* Cyan */
-}
-
-/* Neon Theme: Bright and Colorful */
-[data-theme="neon"] {
-  --background-color: #1A1A1A; /* Dark gray */
-  --text-color: #FF00FF; /* Neon magenta */
-  --accent-color: #00FFFF; /* Neon cyan */
-}
-
-/* Vaporwave Theme: Retro Aesthetic */
-[data-theme="vaporwave"] {
-  --background-color: #2E1A47; /* Deep purple */
-  --text-color: #FF77FF; /* Soft pink */
-  --accent-color: #FFD700; /* Gold */
-}
-
-/* Midnight Theme: Dark and Sleek */
-[data-theme="midnight"] {
-  --background-color: #121212; /* Almost black */
-  --text-color: #E0E0E0; /* Light gray */
-  --accent-color: #BB86FC; /* Soft purple */
-}
-
-/* Forest Theme: Earthy and Natural */
-[data-theme="forest"] {
-  --background-color: #2B3A32; /* Deep forest green */
-  --text-color: #E0E0D1; /* Light beige */
-  --accent-color: #A3B18A; /* Sage green */
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--font-family);
-  transition: background-color var(--transition-speed), color var(--transition-speed);
-}
-
-a {
-  color: var(--accent-color);
-  transition: color var(--transition-speed);
-}
-
-a:hover {
-  color: var(--text-color);
-}
-
-/* Apply Theme Variables */
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-/* Apply Theme to Header */
-.header {
-  color: var(--header-color);
-  font-size: 48px;
-  font-weight: 600;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  text-align: center;
-}
-
-/* Apply Theme to Buttons */
-.button, .app-card, .game-card {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  padding: 12px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 18px;
-  text-align: center;
-  transition: background 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.button:hover, .app-card:hover, .game-card:hover {
-  background-color: var(--button-hover);
-  transform: scale(1.05);
-}
-
 /* Panic Button */
 .panic-button {
   margin-top: 20px;
@@ -410,7 +308,7 @@ body {
   background-color: darkred;
 }
 
-/* App Page Styles */
+/* App List */
 .app-list {
   display: flex;
   flex-wrap: wrap;
@@ -429,7 +327,6 @@ body {
   text-align: center;
   transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
-  border: none;
 }
 
 .app-card:hover {
@@ -438,229 +335,78 @@ body {
   transform: scale(1.05);
 }
 
-/* App Display Area */
-.app-container {
-  width: 100%;
-  max-width: 900px;
-  height: 500px;
-  margin-top: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  background: black;
-  position: relative;
-}
-
-iframe#app-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Full-Screen Exit Button */
-.fullscreen-button {
-  display: none;
-  position: fixed;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: red;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  z-index: 9999;
-}
-
-.fullscreen-button:hover {
-  background-color: darkred;
-}
-
-/* Ensure the canvas stretches to the full screen */
-#particles-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* So it doesn’t block clicks */
-    z-index: -1; /* Behind the content */
-}
-
-/* Basic mobile responsiveness */
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
-}
-
-/* Navbar styling for small screens */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    z-index: 9999;
-    padding: 15px 10px;
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #3b3b3b;
-    transition: background-color 0.3s ease;
-}
-
-.navbar a:hover {
-    background-color: #555;
-}
-
-/* Content container */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+/* Mobile Layout */
+@media (max-width: 600px) {
+  .navbar a {
     width: 90%;
-    max-width: 500px;
-    margin-top: 80px; /* Adjust margin to prevent overlap with navbar */
-    backdrop-filter: blur(15px);
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
+  }
+  
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .setting {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.setting {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-
-label {
+  label {
     font-size: 14px;
-    width: 40%; /* Adjust label width */
-}
+    width: 40%;
+  }
 
-input, select {
+  input, select {
     padding: 8px;
     font-size: 14px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    width: 55%; /* Adjust input width */
+    width: 55%;
+  }
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3b3b3b;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 80%; /* Make buttons responsive */
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-/* Adjust the home button at the bottom */
-
-/* Home Button (Now Compact & Theme-Compatible) */
+/* Home Button */
 #home-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    padding: 10px 12px;
-    border-radius: 50%; /* Makes it a circular icon */
-    font-size: 24px;
-    cursor: pointer;
-    border: none;
-    transition: background 0.3s ease, transform 0.2s ease;
-    z-index: 9999; /* Stays on top */
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 10px 12px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Hover Effect */
 #home-button:hover {
-    background-color: var(--button-hover);
-    transform: scale(1.1);
+  background-color: var(--button-hover);
+  transform: scale(1.1);
 }
 
 /* Fix Layout of Game List */
 .game-list, .app-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .game-card, .app-card {
-    width: 100%;
-    max-width: 220px;  /* Adjust max-width to prevent overflow */
+  width: 100%;
+  max-width: 220px;
 }
 
-/* Apply to Navbar for better spacing */
 .navbar a {
-    margin-bottom: 10px;
-    width: 100%;  /* Make navbar buttons responsive */
+  margin-bottom: 10px;
+  width: 100%;
 }
-
-/* Adjust Mobile Layout */
-@media (max-width: 600px) {
-    .navbar a {
-        width: 90%;  /* Full width for mobile */
-    }
-    .container {
-        width: 95%;
-        padding: 15px;
-    }
-    .setting {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-#exit-fullscreen {
-  display: none; /* Initially hidden */
-  position: fixed; /* Keeps the button at the top */
-  top: 20px; /* Adjust the position as needed */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Ensure the button is centered */
-  z-index: 9999; /* Ensure it stays on top of other content */
-  background-color: rgba(0, 0, 0, 0.5); /* Background color to make it stand out */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: opacity 0.3s ease;
-}
-
-#exit-full
-
-
-
