@@ -1,23 +1,12 @@
 /* Global Styles */
-:root {
-  /* Define color palette */
-  --background-color: #f0f0f0;
-  --text-color: #333;
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --button-bg: #2980b9;
-  --button-text: #fff;
-  --button-hover: #1c6ea4;
-  --header-color: #2c3e50;
-}
-
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: #1e1e1e;
+  color: #f4f4f4;
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
+  background-image: url('');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -28,7 +17,6 @@ body {
   justify-content: center;
 }
 
-/* Container */
 .container {
   display: flex;
   flex-direction: column;
@@ -43,13 +31,97 @@ body {
   width: min(90%, 500px);
 }
 
-/* Header */
 .header {
-  color: var(--header-color);
   font-size: 48px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #FFFF00;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.icon {
+  height: 48px;
+  width: 48px;
+}
+
+.description {
+  font-size: 18px;
+  color: #d1d1d1;
+  line-height: 1.6;
+}
+
+.input {
+  width: 100%;
+  max-width: 450px;
+  background-color: transparent;
+  border: 2px solid rgb(100, 100, 100);
+  font-size: 16px;
+  padding: 14px;
   text-align: center;
+  color: #f2fa00;
+  outline: none;
+  border-radius: 50px;
+  transition: border-color 200ms, box-shadow 200ms;
+}
+
+.input::placeholder {
+  color: #a1a1a1;
+}
+
+.input:focus {
+  border-color: #f7dc0c;
+  box-shadow: 0 0 10px rgba(104, 93, 255, 0.6);
+}
+
+.input:disabled {
+  color: #757575;
+}
+
+.logo {
+  height: 60px;
+  width: 60px;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 30px #685dff);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  color: #fafa00;
+  backdrop-filter: blur(10px);
+}
+
+.footer a,
+.footer a:visited {
+  color: #fafa00;
+  font-size: 16px;
+  text-decoration: none;
+  text-underline-offset: 2.5px;
+  transition: color 200ms, text-decoration 200ms;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: #fafa00;
+}
+
+.footer div {
+  display: flex;
+  gap: 30px;
 }
 
 /* Navbar */
@@ -59,20 +131,23 @@ body {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
+  color: #fafa00;
+  z-index: 1000;
   padding: 10px 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
   display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 1000;
+  align-items: center; /* Ensures buttons & Discord icon align */
+  justify-content: left;
+  gap: 10px; /* Adds spacing between buttons and Discord icon */
 }
 
-/* Navbar Buttons */
+/* Navbar buttons */
 .navbar a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--button-text);
+  color: var(--button-text) !important;  /* Now follows the theme */
   text-align: center;
   padding: 12px 18px;
   text-decoration: none;
@@ -82,93 +157,501 @@ body {
 }
 
 .navbar a:hover {
-  background-color: var(--button-hover);
-  color: #fff;
+  background-color: #fafa00;
+  color: black;
 }
 
-/* Game & App Page: Horizontal Scroll */
-.game-list, .app-list {
+/* Style buttons */
+.button {
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  margin: 5px;
+  background-color: #3b3b3b; /* Slightly lighter gray */
+  border-radius: 10px;
+  transition: background 0.3s ease;
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px;
-  white-space: nowrap;
-  scrollbar-width: thin;
-  scrollbar-color: var(--button-bg) transparent;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Matches Discord button */
+  cursor: pointer;
 }
 
-/* Scrollbar Styling */
-.game-list::-webkit-scrollbar, .app-list::-webkit-scrollbar {
-  height: 8px;
+/* Hover effect for buttons */
+.button:hover {
+  background-color: #555; /* Lighter gray on hover */
 }
 
-.game-list::-webkit-scrollbar-track, .app-list::-webkit-scrollbar-track {
-  background: transparent;
+/* Fix Discord Icon Alignment */
+.discord-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5865F2; /* Discord brand color */
+  border-radius: 10px;
+  width: 40px;
+  height: 40px; /* Matches button size */
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
-.game-list::-webkit-scrollbar-thumb, .app-list::-webkit-scrollbar-thumb {
-  background: var(--button-bg);
-  border-radius: 4px;
+/* Resize Discord Icon */
+.discord-icon {
+  width: 24px;
+  height: 24px;
 }
 
-/* Game & App Cards */
-.game-card, .app-card {
-  min-width: 200px;
-  max-width: 250px;
-  text-align: center;
-  background-color: var(--button-bg);
-  color: var(--button-text);
+/* Hover Effect for Discord Button */
+.discord-button:hover {
+  background-color: #4752C4;
+  transform: scale(1.1);
+}
+
+/* Games Page Styles */
+.game-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.game-card {
+  background-color: #3b3b3b;
+  color: white;
   padding: 12px 20px;
   border-radius: 10px;
   text-decoration: none;
   font-size: 18px;
+  text-align: center;
   transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
   border: none;
 }
 
-.game-card:hover, .app-card:hover {
+.game-card:hover {
+  background-color: #fafa00;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Game Display Area */
+.game-container {
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: black;
+  position: relative;
+}
+
+iframe#game-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Full-Screen Exit Button */
+.fullscreen-button {
+  display: none;
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 9999;
+}
+
+.fullscreen-button:hover {
+  background-color: darkred;
+}
+
+/* Settings Page */
+.setting {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+}
+
+.setting label {
+  font-size: 18px;
+}
+
+.setting input, .setting select {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Base Styles */
+:root {
+  --font-family: 'Arial', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Default Theme: Black Modern Style */
+[data-theme="default"] {
+  --background-color: #000000;
+  --text-color: #FFFFFF;
+  --accent-color: #1A1A1A;
+}
+
+/* Cyber Theme: Futuristic Color Scheme */
+[data-theme="cyber"] {
+  --background-color: #0D0221; /* Deep midnight blue */
+  --text-color: #00FF00; /* Neon green */
+  --accent-color: #00FFFF; /* Cyan */
+}
+
+/* Neon Theme: Bright and Colorful */
+[data-theme="neon"] {
+  --background-color: #1A1A1A; /* Dark gray */
+  --text-color: #FF00FF; /* Neon magenta */
+  --accent-color: #00FFFF; /* Neon cyan */
+}
+
+/* Vaporwave Theme: Retro Aesthetic */
+[data-theme="vaporwave"] {
+  --background-color: #2E1A47; /* Deep purple */
+  --text-color: #FF77FF; /* Soft pink */
+  --accent-color: #FFD700; /* Gold */
+}
+
+/* Midnight Theme: Dark and Sleek */
+[data-theme="midnight"] {
+  --background-color: #121212; /* Almost black */
+  --text-color: #E0E0E0; /* Light gray */
+  --accent-color: #BB86FC; /* Soft purple */
+}
+
+/* Forest Theme: Earthy and Natural */
+[data-theme="forest"] {
+  --background-color: #2B3A32; /* Deep forest green */
+  --text-color: #E0E0D1; /* Light beige */
+  --accent-color: #A3B18A; /* Sage green */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+a {
+  color: var(--accent-color);
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--text-color);
+}
+
+/* Apply Theme Variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Apply Theme to Header */
+.header {
+  color: var(--header-color);
+  font-size: 48px;
+  font-weight: 600;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+/* Apply Theme to Buttons */
+.button, .app-card, .game-card {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 12px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover, .app-card:hover, .game-card:hover {
   background-color: var(--button-hover);
   transform: scale(1.05);
 }
 
-/* Home Button */
-#home-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  padding: 10px;
-  border-radius: 50%;
-  font-size: 24px;
+/* Panic Button */
+.panic-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.panic-button:hover {
+  background-color: darkred;
+}
+
+/* App Page Styles */
+.app-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.app-card {
+  background-color: #3b3b3b;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
   border: none;
-  transition: background 0.3s ease, transform 0.2s ease;
-  z-index: 9999;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-#home-button:hover {
-  background-color: var(--button-hover);
-  transform: scale(1.1);
+.app-card:hover {
+  background-color: #fafa00;
+  color: black;
+  transform: scale(1.05);
 }
 
-/* Exit Fullscreen Button */
-#exit-fullscreen {
+/* App Display Area */
+.app-container {
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: black;
+  position: relative;
+}
+
+iframe#app-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Full-Screen Exit Button */
+.fullscreen-button {
   display: none;
   position: fixed;
-  top: 20px;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
   z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+}
+
+.fullscreen-button:hover {
+  background-color: darkred;
+}
+
+/* Ensure the canvas stretches to the full screen */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* So it doesn’t block clicks */
+    z-index: -1; /* Behind the content */
+}
+
+/* Basic mobile responsiveness */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+/* Navbar styling for small screens */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 9999;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #3b3b3b;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #555;
+}
+
+/* Content container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 90%;
+    max-width: 500px;
+    margin-top: 80px; /* Adjust margin to prevent overlap with navbar */
+    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.setting {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+label {
+    font-size: 14px;
+    width: 40%; /* Adjust label width */
+}
+
+input, select {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 55%; /* Adjust input width */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3b3b3b;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%; /* Make buttons responsive */
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Adjust the home button at the bottom */
+
+/* Home Button (Now Compact & Theme-Compatible) */
+#home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px 12px;
+    border-radius: 50%; /* Makes it a circular icon */
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 9999; /* Stays on top */
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover Effect */
+#home-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.1);
+}
+
+/* Fix Layout of Game List */
+.game-list, .app-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.game-card, .app-card {
+    width: 100%;
+    max-width: 220px;  /* Adjust max-width to prevent overflow */
+}
+
+/* Apply to Navbar for better spacing */
+.navbar a {
+    margin-bottom: 10px;
+    width: 100%;  /* Make navbar buttons responsive */
+}
+
+/* Adjust Mobile Layout */
+@media (max-width: 600px) {
+    .navbar a {
+        width: 90%;  /* Full width for mobile */
+    }
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+    .setting {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+#exit-fullscreen {
+  display: none; /* Initially hidden */
+  position: fixed; /* Keeps the button at the top */
+  top: 20px; /* Adjust the position as needed */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Ensure the button is centered */
+  z-index: 9999; /* Ensure it stays on top of other content */
+  background-color: rgba(0, 0, 0, 0.5); /* Background color to make it stand out */
+  color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -177,21 +660,9 @@ body {
   transition: opacity 0.3s ease;
 }
 
-#exit-fullscreen:hover {
-  background-color: rgba(255, 0, 0, 0.8);
-}
+#exit-full
 
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-  .navbar a {
-    width: 90%;
-  }
-  .container {
-    width: 95%;
-    padding: 15px;
-  }
 
-::contentReference[oaicite:0]{index=0}
  
 
 
