@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1EE0QBYNM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Z1EE0QBYNM');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1EE0QBYNM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z1EE0QBYNM');
+  </script>
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,83 +18,22 @@
   <script src="/uv/uv.bundle.js"></script>
   <script src="/uv/uv.config.js"></script>
 
-  <script>
-    function openApp(url, newTab = false) {
-      let encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T6M2XZ26');</script>
 
-      if (newTab) {
-        // Open in a new tab (for Discord and other iframe-blocked sites)
-        window.open(encodedUrl, "_blank");
-      } else {
-        // Open in full-screen iframe
-        let iframe = document.getElementById("app-frame");
-        iframe.src = encodedUrl;
-
-        // Request full screen
-        if (iframe.requestFullscreen) {
-          iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) {
-          iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) {
-          iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) {
-          iframe.msRequestFullscreen();
-        }
-
-        // Show exit button when moving to the top
-        document.addEventListener("mousemove", showExitButton);
-      }
-    }
-
-    function exitFullScreen() {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-
-      // Hide exit button
-      document.getElementById("exit-fullscreen").style.display = "none";
-      document.removeEventListener("mousemove", showExitButton);
-    }
-
-    function showExitButton(event) {
-      if (event.clientY < 50) { // If mouse is near the top of the page
-        document.getElementById("exit-fullscreen").style.display = "block";
-      } else {
-        document.getElementById("exit-fullscreen").style.display = "none";
-      }
-    }
-  </script>
-
-<script type='text/javascript' src='//pl26091560.effectiveratecpm.com/24/ad/4b/24ad4b5724af7fb82c4a97525048032e.js'></script>
-
-<script type='text/javascript' src='//pl26091686.effectiveratecpm.com/11/30/70/1130708ed2a9946c38fb8602f8285721.js'></script>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T6M2XZ26');</script>
-<!-- End Google Tag Manager -->
-
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6M2XZ26"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </head>
 <body>
 
-<canvas id="particles-canvas"></canvas>
-<script src="/particles.js"></script>
+  <canvas id="particles-canvas"></canvas>
+  <script src="/particles.js"></script>
 
-  
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6M2XZ26"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  
   <div class="navbar">
     <a href="/index.html" class="button">Home</a>
     <a href="/g.html" class="button">Games</a>
@@ -107,13 +44,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="header">📱 Popular Apps 📱</h1>
     
     <div class="app-list">
-  <button onclick="openApp('https://docs.google.com')" class="app-card">Google Docs</button>
-  <button onclick="openApp('https://drive.google.com')" class="app-card">Google Drive</button>
-  <button onclick="openApp('https://www.youtube.com')" class="app-card">YouTube</button>
-  <button onclick="openApp('https://www.spotify.com')" class="app-card">Spotify</button>
-  <button onclick="openApp('https://www.discord.com')" class="app-card">Discord</button>
-</div>
-
+      <button onclick="openApp('https://docs.google.com')" class="app-card">Google Docs</button>
+      <button onclick="openApp('https://drive.google.com')" class="app-card">Google Drive</button>
+      <button onclick="openApp('https://www.youtube.com')" class="app-card">YouTube</button>
+      <button onclick="openApp('https://www.spotify.com')" class="app-card">Spotify</button>
+      <button onclick="openApp('https://www.discord.com')" class="app-card">Discord</button>
+    </div>
 
     <div class="app-container">
       <iframe id="app-frame" src="" frameborder="0"></iframe>
@@ -121,17 +57,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-<button id="home-button" onclick="goHome()">🏠 Home</button>
+  <button id="home-button" onclick="goHome()">🏠 Home</button>
 
-<script>
-  function goHome() {
-    window.location.href = "/index.html";
-  }
-</script>
+  <script>
+    function goHome() {
+      window.location.href = "/index.html";
+    }
+  </script>
 
   <script src="script.js" defer></script>
   <script src="apps.js" defer></script>
 
 </body>
 </html>
+
 
