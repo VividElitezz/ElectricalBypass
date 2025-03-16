@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1EE0QBYNM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Z1EE0QBYNM');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1EE0QBYNM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z1EE0QBYNM');
+  </script>
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,76 +18,66 @@
   <script src="/uv/uv.bundle.js"></script>
   <script src="/uv/uv.config.js"></script>
 
-  <script>
-    function openGame(url) {
-      let encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
-      let iframe = document.getElementById("game-frame");
-      iframe.src = encodedUrl;
+  <style>
+    /* Updated CSS for g.html */
 
-      // Request full-screen mode
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-      } else if (iframe.mozRequestFullScreen) {
-        iframe.mozRequestFullScreen();
-      } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen();
-      } else if (iframe.msRequestFullscreen) {
-        iframe.msRequestFullscreen();
-      }
-
-      // Show exit button when moving cursor to the top
-      document.addEventListener("mousemove", showExitButton);
+    .game-card:hover {
+      background-color: #3b3b3b;
+      color: #fff;
     }
 
-    function exitFullScreen() {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-
-      // Hide exit button
-      document.getElementById("exit-fullscreen").style.display = "none";
-      document.removeEventListener("mousemove", showExitButton);
+    .game-container iframe {
+      width: 100%;
+      height: 80vh;
     }
 
-    function showExitButton(event) {
-      if (event.clientY < 50) { // Show exit button if cursor is at the top
-        document.getElementById("exit-fullscreen").style.display = "block";
-      } else {
-        document.getElementById("exit-fullscreen").style.display = "none";
-      }
+    #exit-fullscreen {
+      display: none;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+      z-index: 9999;
     }
-  </script>
 
-<script type='text/javascript' src='//pl26091560.effectiveratecpm.com/24/ad/4b/24ad4b5724af7fb82c4a97525048032e.js'></script>
+    #exit-fullscreen.show {
+      display: block;
+    }
 
-<script type='text/javascript' src='//pl26091686.effectiveratecpm.com/11/30/70/1130708ed2a9946c38fb8602f8285721.js'></script>
+    .fullscreen-button {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T6M2XZ26');</script>
-<!-- End Google Tag Manager -->
+    .fullscreen-button:hover {
+      background-color: #ff3333;
+    }
+  </style>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T6M2XZ26');</script>
   
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6M2XZ26"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </head>
 <body>
 
-<canvas id="particles-canvas"></canvas>
-<script src="/particles.js"></script>
+  <canvas id="particles-canvas"></canvas>
+  <script src="/particles.js"></script>
 
-  
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6M2XZ26"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  
   <div class="navbar">
     <a href="/index.html" class="button">Home</a>
     <a href="/a.html" class="button">Apps</a>
@@ -98,40 +86,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="container">
     <h1 class="header">🎮 Unblocked Games 🎮</h1>
-    
-    <div class="game-list">
-  <button onclick="openGame('https://1v1.lol/')" class="game-card">1v1.LOL</button>
-  <button onclick="openGame('https://shellshock.io/')" class="game-card">Shell Shockers</button>
-  <button onclick="openGame('https://krunker.io/')" class="game-card">Krunker.io</button>
-  <button onclick="openGame('https://surviv.io/')" class="game-card">Surviv.io</button>
-  <button onclick="openGame('https://slopegame.io/')" class="game-card">Slope</button>
-  <button onclick="openGame('https://agar.io/')" class="game-card">Agar.io</button>
-  <button onclick="openGame('https://paper.io/')" class="game-card">Paper.io</button>
-  <button onclick="openGame('https://zombs.io/')" class="game-card">Zombs.io</button>
-  <button onclick="openGame('https://games.cdn.famobi.com/html5games/m/moto-x3m/v100/?fg_domain=play.famobi.com')" class="game-card">Moto X3M</button>
-  <button onclick="openGame('https://play.famobi.com/wrapper/cut-the-rope/A1000-10')" class="game-card">Cut the Rope</button>
-</div>
 
+    <div class="game-list">
+      <button onclick="openGame('https://1v1.lol/')" class="game-card">1v1.LOL</button>
+      <button onclick="openGame('https://shellshock.io/')" class="game-card">Shell Shockers</button>
+      <button onclick="openGame('https://krunker.io/')" class="game-card">Krunker.io</button>
+      <button onclick="openGame('https://surviv.io/')" class="game-card">Surviv.io</button>
+      <button onclick="openGame('https://slopegame.io/')" class="game-card">Slope</button>
+      <button onclick="openGame('https://agar.io/')" class="game-card">Agar.io</button>
+      <button onclick="openGame('https://paper.io/')" class="game-card">Paper.io</button>
+      <button onclick="openGame('https://zombs.io/')" class="game-card">Zombs.io</button>
+      <button onclick="openGame('https://games.cdn.famobi.com/html5games/m/moto-x3m/v100/?fg_domain=play.famobi.com')" class="game-card">Moto X3M</button>
+      <button onclick="openGame('https://play.famobi.com/wrapper/cut-the-rope/A1000-10')" class="game-card">Cut the Rope</button>
+    </div>
 
     <div class="game-container">
-      <iframe id="game-frame" src="" frameborder="0"></iframe>
+      <iframe id="game-frame" src="" frameborder="0" sandbox="allow-scripts allow-same-origin"></iframe>
       <button id="exit-fullscreen" class="fullscreen-button" onclick="exitFullScreen()">⏏ Exit Full Screen</button>
     </div>
   </div>
 
-<button id="home-button" type="button" onclick="goHome()">🏠 Home</button>
+  <button id="home-button" type="button" onclick="goHome()">🏠 Home</button>
 
-<script>
-  function goHome() {
-    window.location.href = "/index.html"; 
-  }
-</script>
+  <script>
+    function goHome() {
+      window.location.href = "/index.html"; 
+    }
+  </script>
 
-<script src="script.js" defer></script>
-<script src="game.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="game.js" defer></script>
 
-  
 </body>
 </html>
+
 
 
