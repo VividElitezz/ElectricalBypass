@@ -228,7 +228,7 @@ body {
   transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
   border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
+  box-shadow: 0 4px 8px rgba(169, 169, 169, 0.5); /* Changed to grey shadow */
 }
 
 .game-card:hover {
@@ -255,7 +255,7 @@ body {
   overflow: hidden;
   background: black;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Added shadow */
+  box-shadow: 0 10px 20px rgba(169, 169, 169, 0.5); /* Changed to grey shadow */
 }
 
 iframe#game-frame {
@@ -308,6 +308,7 @@ iframe#game-frame {
     padding: 8px 12px; /* Smaller button on mobile */
   }
 }
+
 
 /* Settings Page */
 .setting {
