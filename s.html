@@ -107,6 +107,7 @@
             background-color: #555;
         }
 
+        
         /* Responsive design for smaller screens */
         @media (max-width: 600px) {
             /* Adjust navbar for smaller screens */
@@ -135,11 +136,6 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-        }
-
-        /* Focus state for inputs and buttons */
-        input:focus, select:focus, button:focus {
-            outline: 2px solid #ffcc00; /* Highlight focus state */
         }
     </style>
 </head>
@@ -328,21 +324,13 @@
             }
             animationFrame = requestAnimationFrame(animateParticles);
         }
-
-        // Stop particle animation when tab is not active
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                cancelAnimationFrame(animationFrame);
-            } else {
-                startParticles();
-            }
-        });
     </script>
 
-    <script src="script.js" defer></script>
+<script src="script.js" defer></script>
+
+    
 </body>
 </html>
-
 
 
 
