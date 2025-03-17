@@ -106,6 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
         fullscreenFrame.style.display = "block";
         exitButton.style.display = "block";
 
+        // Hide the game/app container when fullscreen is triggered
+        document.querySelector('.game-container').style.display = 'none';
+        document.querySelector('.app-container').style.display = 'none';
+
         // Enter Full-Screen Mode
         if (fullscreenFrame.requestFullscreen) {
             fullscreenFrame.requestFullscreen();
@@ -124,6 +128,10 @@ document.addEventListener("DOMContentLoaded", function () {
         exitButton.style.display = "none";
         fullscreenFrame.src = ""; // Clear the iframe source after exiting fullscreen
 
+        // Show the game/app container again
+        document.querySelector('.game-container').style.display = 'block';
+        document.querySelector('.app-container').style.display = 'block';
+
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.mozCancelFullScreen) {
@@ -135,4 +143,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
 
