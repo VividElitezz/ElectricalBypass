@@ -63,4 +63,53 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         document.body.appendChild(homeButton);
     }
+
+        });
+document.addEventListener("DOMContentLoaded", function () {
+    // Create Full-Screen Iframe
+    let fullscreenFrame = document.createElement("iframe");
+    fullscreenFrame.id = "fullscreen-frame";
+    document.body.appendChild(fullscreenFrame);
+
+    // Create Exit Button
+    let exitButton = document.createElement("button");
+    exitButton.id = "exit-fullscreen";
+    exitButton.textContent = "⏏ Exit Full Screen";
+    exitButton.onclick = exitFullScreen;
+    document.body.appendChild(exitButton);
+
+    // Function to Open Game/App in Full-Screen
+    window.openFullScreen = function (url) {
+        fullscreenFrame.src = url;
+        fullscreenFrame.style.display = "block";
+        exitButton.style.display = "block";
+
+        // Enter Full-Screen Mode
+        if (fullscreenFrame.requestFullscreen) {
+            fullscreenFrame.requestFullscreen();
+        } else if (fullscreenFrame.mozRequestFullScreen) {
+            fullscreenFrame.mozRequestFullScreen();
+        } else if (fullscreenFrame.webkitRequestFullscreen) {
+            fullscreenFrame.webkitRequestFullscreen();
+        } else if (fullscreenFrame.msRequestFullscreen) {
+            fullscreenFrame.msRequestFullscreen();
+        }
+    };
+
+    // Function to Exit Full-Screen Mode
+    function exitFullScreen() {
+        fullscreenFrame.style.display = "none";
+        exitButton.style.display = "none";
+        fullscreenFrame.src = "";
+
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
 });
