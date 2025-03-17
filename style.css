@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
-  background-color: #1e1e1e;
-  color: #f4f4f4;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -37,7 +37,7 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  color: #FFFF00;
+  color: var(--header-color);
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
@@ -48,7 +48,7 @@ body {
 
 .description {
   font-size: 18px;
-  color: #d1d1d1;
+  color: var(--text-color);
   line-height: 1.6;
 }
 
@@ -137,12 +137,11 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 
   display: flex;
-  align-items: center; /* Ensures buttons & Discord icon align */
+  align-items: center;
   justify-content: left;
-  gap: 10px; /* Adds spacing between buttons and Discord icon */
+  gap: 10px;
 }
 
-/* Navbar buttons */
 .navbar a {
   display: flex;
   align-items: center;
@@ -167,7 +166,7 @@ body {
   text-decoration: none;
   padding: 12px 18px;
   margin: 5px;
-  background-color: #3b3b3b; /* Slightly lighter gray */
+  background-color: var(--button-bg);
   border-radius: 10px;
   transition: background 0.3s ease;
   display: flex;
@@ -179,7 +178,7 @@ body {
 
 /* Hover effect for buttons */
 .button:hover {
-  background-color: #555; /* Lighter gray on hover */
+  background-color: var(--button-hover);
 }
 
 /* Fix Discord Icon Alignment */
@@ -207,13 +206,15 @@ body {
   transform: scale(1.1);
 }
 
-/* Game List Layout */
+/* Game List Layout - Horizontal */
 .game-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
+  display: flex; /* Align items in a row */
+  flex-direction: row; /* Ensure items are laid out horizontally */
+  gap: 15px; /* Space between items */
+  justify-content: flex-start; /* Align to the left */
   margin-top: 20px;
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  padding-bottom: 10px; /* Optional, adds a bit of spacing */
 }
 
 /* Game Card */
@@ -228,7 +229,9 @@ body {
   transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
   border: none;
-  box-shadow: 0 4px 8px rgba(169, 169, 169, 0.5); /* Changed to grey shadow */
+  box-shadow: 0 4px 8px rgba(169, 169, 169, 0.5); /* Grey shadow */
+  min-width: 180px; /* Set a minimum width for each card */
+  flex-shrink: 0; /* Prevent cards from shrinking */
 }
 
 .game-card:hover {
@@ -255,7 +258,7 @@ body {
   overflow: hidden;
   background: black;
   position: relative;
-  box-shadow: 0 10px 20px rgba(169, 169, 169, 0.5); /* Changed to grey shadow */
+  box-shadow: 0 10px 20px rgba(169, 169, 169, 0.5); /* Grey shadow */
 }
 
 iframe#game-frame {
@@ -278,7 +281,7 @@ iframe#game-frame {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease, opacity 0.3s ease; /* Added opacity transition */
+  transition: background 0.3s ease, opacity 0.3s ease;
   z-index: 9999;
   opacity: 0; /* Initially hidden */
 }
@@ -291,167 +294,15 @@ iframe#game-frame {
   background-color: darkred;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .game-list {
-    gap: 10px;
-  }
-
-  .game-container {
-    width: 100%;
-    max-width: 100%;
-    height: 300px; /* Adjust height for small screens */
-  }
-
-  .fullscreen-button {
-    font-size: 14px;
-    padding: 8px 12px; /* Smaller button on mobile */
-  }
-}
-
-
-/* Settings Page */
-.setting {
-  margin: 15px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 400px;
-}
-
-.setting label {
-  font-size: 18px;
-}
-
-.setting input, .setting select {
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-/* Base Styles */
-:root {
-  --font-family: 'Arial', sans-serif;
-  --transition-speed: 0.3s;
-}
-
-/* Default Theme: Black Modern Style */
-[data-theme="default"] {
-  --background-color: #000000;
-  --text-color: #FFFFFF;
-  --accent-color: #1A1A1A;
-}
-
-/* Cyber Theme: Futuristic Color Scheme */
-[data-theme="cyber"] {
-  --background-color: #0D0221; /* Deep midnight blue */
-  --text-color: #00FF00; /* Neon green */
-  --accent-color: #00FFFF; /* Cyan */
-}
-
-/* Neon Theme: Bright and Colorful */
-[data-theme="neon"] {
-  --background-color: #1A1A1A; /* Dark gray */
-  --text-color: #FF00FF; /* Neon magenta */
-  --accent-color: #00FFFF; /* Neon cyan */
-}
-
-/* Vaporwave Theme: Retro Aesthetic */
-[data-theme="vaporwave"] {
-  --background-color: #2E1A47; /* Deep purple */
-  --text-color: #FF77FF; /* Soft pink */
-  --accent-color: #FFD700; /* Gold */
-}
-
-/* Midnight Theme: Dark and Sleek */
-[data-theme="midnight"] {
-  --background-color: #121212; /* Almost black */
-  --text-color: #E0E0E0; /* Light gray */
-  --accent-color: #BB86FC; /* Soft purple */
-}
-
-/* Forest Theme: Earthy and Natural */
-[data-theme="forest"] {
-  --background-color: #2B3A32; /* Deep forest green */
-  --text-color: #E0E0D1; /* Light beige */
-  --accent-color: #A3B18A; /* Sage green */
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--font-family);
-  transition: background-color var(--transition-speed), color var(--transition-speed);
-}
-
-a {
-  color: var(--accent-color);
-  transition: color var(--transition-speed);
-}
-
-a:hover {
-  color: var(--text-color);
-}
-
-/* Apply Theme Variables */
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-/* Apply Theme to Header */
-.header {
-  color: var(--header-color);
-  font-size: 48px;
-  font-weight: 600;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  text-align: center;
-}
-
-/* Apply Theme to Buttons */
-.button, .app-card, .game-card {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  padding: 12px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 18px;
-  text-align: center;
-  transition: background 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.button:hover, .app-card:hover, .game-card:hover {
-  background-color: var(--button-hover);
-  transform: scale(1.05);
-}
-
-/* Panic Button */
-.panic-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  font-size: 16px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.panic-button:hover {
-  background-color: darkred;
-}
-
-/* App List Layout */
+/* App List Layout - Horizontal */
 .app-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
+  display: flex; /* Align items in a row */
+  flex-direction: row; /* Ensure items are laid out horizontally */
+  gap: 15px; /* Space between items */
+  justify-content: flex-start; /* Align to the left */
   margin-top: 20px;
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  padding-bottom: 10px; /* Optional, adds a bit of spacing */
 }
 
 /* App Card */
@@ -516,7 +367,7 @@ iframe#app-frame {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease, opacity 0.3s ease; /* Added opacity transition */
+  transition: background 0.3s ease, opacity 0.3s ease;
   z-index: 9999;
   opacity: 0; /* Initially hidden */
 }
@@ -529,208 +380,33 @@ iframe#app-frame {
   background-color: darkred;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .app-list {
-    gap: 10px;
-  }
-
-  .app-container {
-    width: 100%;
-    max-width: 100%;
-    height: 300px; /* Adjust height for small screens */
-  }
-
-  .fullscreen-button {
-    font-size: 14px;
-    padding: 8px 12px; /* Smaller button on mobile */
-  }
+/* Panic Button */
+.panic-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
+.panic-button:hover {
+  background-color: darkred;
+}
 
 /* Ensure the canvas stretches to the full screen */
 #particles-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* So it doesn’t block clicks */
-    z-index: -1; /* Behind the content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* So it doesn’t block clicks */
+  z-index: -1; /* Behind the content */
 }
 
-/* Basic mobile responsiveness */
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
-}
-
-/* Navbar styling for small screens */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    z-index: 9999;
-    padding: 15px 10px;
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #3b3b3b;
-    transition: background-color 0.3s ease;
-}
-
-.navbar a:hover {
-    background-color: #555;
-}
-
-/* Content container */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    width: 90%;
-    max-width: 500px;
-    margin-top: 80px; /* Adjust margin to prevent overlap with navbar */
-    backdrop-filter: blur(15px);
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-.setting {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-
-label {
-    font-size: 14px;
-    width: 40%; /* Adjust label width */
-}
-
-input, select {
-    padding: 8px;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    width: 55%; /* Adjust input width */
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3b3b3b;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 80%; /* Make buttons responsive */
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-/* Adjust the home button at the bottom */
-
-/* Home Button (Now Compact & Theme-Compatible) */
-#home-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    padding: 10px 12px;
-    border-radius: 50%; /* Makes it a circular icon */
-    font-size: 24px;
-    cursor: pointer;
-    border: none;
-    transition: background 0.3s ease, transform 0.2s ease;
-    z-index: 9999; /* Stays on top */
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Hover Effect */
-#home-button:hover {
-    background-color: var(--button-hover);
-    transform: scale(1.1);
-}
-
-/* Fix Layout of Game List */
-.game-list, .app-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.game-card, .app-card {
-    width: 100%;
-    max-width: 220px;  /* Adjust max-width to prevent overflow */
-}
-
-/* Apply to Navbar for better spacing */
-.navbar a {
-    margin-bottom: 10px;
-    width: 100%;  /* Make navbar buttons responsive */
-}
-
-/* Adjust Mobile Layout */
-@media (max-width: 600px) {
-    .navbar a {
-        width: 90%;  /* Full width for mobile */
-    }
-    .container {
-        width: 95%;
-        padding: 15px;
-    }
-    .setting {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-#exit-fullscreen {
-  display: none; /* Initially hidden */
-  position: fixed; /* Keeps the button at the top */
-  top: 20px; /* Adjust the position as needed */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Ensure the button is centered */
-  z-index: 9999; /* Ensure it stays on top of other content */
-  background-color: rgba(0, 0, 0, 0.5); /* Background color to make it stand out */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: opacity 0.3s ease;
-}
-
-#exit-full
 
 
  
