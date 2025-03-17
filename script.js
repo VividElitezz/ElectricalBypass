@@ -63,18 +63,40 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         document.body.appendChild(homeButton);
     }
+});
 
-        });
+// Full-Screen Feature
 document.addEventListener("DOMContentLoaded", function () {
     // Create Full-Screen Iframe
     let fullscreenFrame = document.createElement("iframe");
     fullscreenFrame.id = "fullscreen-frame";
+    fullscreenFrame.style.display = "none";
+    fullscreenFrame.style.position = "fixed";
+    fullscreenFrame.style.top = "0";
+    fullscreenFrame.style.left = "0";
+    fullscreenFrame.style.width = "100%";
+    fullscreenFrame.style.height = "100%";
+    fullscreenFrame.style.zIndex = "9998";
+    fullscreenFrame.style.border = "none";
     document.body.appendChild(fullscreenFrame);
 
     // Create Exit Button
     let exitButton = document.createElement("button");
     exitButton.id = "exit-fullscreen";
     exitButton.textContent = "⏏ Exit Full Screen";
+    exitButton.style.display = "none";
+    exitButton.style.position = "fixed";
+    exitButton.style.top = "20px";
+    exitButton.style.left = "50%";
+    exitButton.style.transform = "translateX(-50%)";
+    exitButton.style.backgroundColor = "red";
+    exitButton.style.color = "white";
+    exitButton.style.padding = "10px 20px";
+    exitButton.style.fontSize = "16px";
+    exitButton.style.cursor = "pointer";
+    exitButton.style.borderRadius = "8px";
+    exitButton.style.border = "none";
+    exitButton.style.zIndex = "9999";
     exitButton.onclick = exitFullScreen;
     document.body.appendChild(exitButton);
 
@@ -113,3 +135,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
