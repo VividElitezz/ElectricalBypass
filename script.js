@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function exitFullScreen() {
         fullscreenFrame.style.display = "none";
         exitButton.style.display = "none";
-        fullscreenFrame.src = "";
+        fullscreenFrame.src = ""; // Clear the iframe source after exiting fullscreen
 
         if (document.exitFullscreen) {
             document.exitFullscreen();
