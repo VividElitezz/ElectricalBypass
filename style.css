@@ -61,7 +61,7 @@ body {
   font-size: 16px;
   padding: 14px;
   text-align: center;
-  color: #f2fa00;
+  color: var(--text-color);
   outline: none;
   border-radius: 50px;
   transition: border-color 200ms, box-shadow 200ms;
@@ -103,6 +103,7 @@ body {
   position: fixed;
   bottom: 0;
   color: #fafa00;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -131,6 +132,7 @@ body {
   top: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: #fafa00;
   z-index: 1000;
@@ -158,8 +160,7 @@ body {
 }
 
 .navbar a:hover {
-  background-color: #fafa00;
-  color: black;
+  color: var(--accent-color);
 }
 
 /* Style buttons */
@@ -168,19 +169,20 @@ body {
   text-decoration: none;
   padding: 12px 18px;
   margin: 5px;
-  background-color: #3b3b3b; /* Slightly lighter gray */
   border-radius: 10px;
-  transition: background 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px; /* Matches Discord button */
   cursor: pointer;
+  transition: all 0.3s ease; /* just change it to all to make it easier because I am NOT putting up with manually adding it */
 }
 
 /* Hover effect for buttons */
 .button:hover {
-  background-color: #555; /* Lighter gray on hover */
+  color: var(--accent-color);
+  transform: scale(1.05, 1.05);
+
 }
 
 /* Fix Discord Icon Alignment */
@@ -192,7 +194,7 @@ body {
   border-radius: 10px;
   width: 40px;
   height: 40px; /* Matches button size */
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
 }
 
@@ -205,7 +207,7 @@ body {
 /* Hover Effect for Discord Button */
 .discord-button:hover {
   background-color: #4752C4;
-  transform: scale(1.1);
+  transform: scale(1.05, 1.05);
 }
 
 /* Game List Layout */
@@ -336,13 +338,16 @@ iframe#game-frame {
 :root {
   --font-family: 'Arial', sans-serif;
   --transition-speed: 0.3s;
+  --background-color: #000000;
+  --text-color: #FFFFFF;
+  --accent-color: #FFD700;
 }
 
 /* Default Theme: Black Modern Style */
 [data-theme="default"] {
   --background-color: #000000;
   --text-color: #FFFFFF;
-  --accent-color: #1A1A1A;
+  --accent-color: #FFD700;
 }
 
 /* Cyber Theme: Futuristic Color Scheme */
@@ -388,12 +393,12 @@ body {
 }
 
 a {
-  color: var(--accent-color);
-  transition: color var(--transition-speed);
+  color: var(--text-color);
+  transition: all var(--transition-speed) 0.2s;
 }
 
 a:hover {
-  color: var(--text-color);
+  color: var(--accent-color);
 }
 
 /* Apply Theme Variables */
@@ -425,7 +430,7 @@ body {
   border: none;
 }
 
-.button:hover, .app-card:hover, .game-card:hover {
+.app-card:hover, .game-card:hover {
   background-color: var(--button-hover);
   transform: scale(1.05);
 }
@@ -583,16 +588,17 @@ body {
 }
 
 .navbar a {
-    color: white;
+    color: var(--accent-color);
     text-decoration: none;
     padding: 10px;
     border-radius: 8px;
-    background-color: #3b3b3b;
-    transition: background-color 0.3s ease;
+    background-color: rgba(0,0,0,0);
+    transition: all var(--transition-speed) ease;
 }
 
 .navbar a:hover {
-    background-color: #555;
+    background-color: rgba(0,0,0,0);
+    color: var(--accent-color);
 }
 
 /* Content container */
@@ -605,6 +611,7 @@ body {
     width: 90%;
     max-width: 500px;
     margin-top: 80px; /* Adjust margin to prevent overlap with navbar */
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
@@ -646,7 +653,7 @@ button {
 }
 
 button:hover {
-    background-color: #555;
+    color: var(--accent-color);
 }
 
 /* Adjust the home button at the bottom */
