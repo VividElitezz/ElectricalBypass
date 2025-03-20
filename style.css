@@ -22,6 +22,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   background-color: rgba(0, 0, 0, 0.6);
   padding: 30px;
@@ -730,10 +731,4 @@ button:hover {
   transition: opacity 0.3s ease;
 }
 
-#exit-full
-
-
- 
-
-
-
+#exit-full {}
